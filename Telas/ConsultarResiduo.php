@@ -50,7 +50,7 @@
                 <a class="logo"><img src="css/imagens/logo.png" width="100" height="50"></a>
                 <ul class="nav-list">
                     <li><a href="menu.php">HOME</a></li>
-                    <li><a href="consultarResiduo.php">CONSULTAR</a></li>
+                    <li><a href="consultarMenu.php">CONSULTAR</a></li>
                     <li><a href="atualizarResiduo.php">ATUALIZAR</a></li>
                     <li><a href="excluirResiduo.php">EXCLUIR</a></li>
                 </ul>
