@@ -1,5 +1,13 @@
 <?php
-    namespace PHP\Modelo\Telas;
+    namespace PHP\Modelo\Tela;
+    require_once('..\Residuo.php');
+    require_once('..\DAO\Inserir.php');
+    require_once('..\DAO\Conexao.php');
+
+    use PHP\Modelo\Residuo;
+    use PHP\Modelo\DAO\Conexao;
+    use PHP\Modelo\DAO\Inserir;
+
 ?>
 
 <!Doctype HTML>
@@ -10,62 +18,145 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="css/estilo.css">
+        <style>
+            body{
+                background-color: white;
+            }
+
+            main{
+                background-color: white;
+                padding: 20px;
+
+                min-width: 320px;
+                max-width: 1920px;
+                margin: auto;
+            }
+
+            img{
+                width: 100%;
+            }
+        </style>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+            h2{
+                font-weight: 900;
+                color: #839766;
+            }
+        </style>
     </head>
     <body>
-            <nav class="navbar bg-body-dark fixed-top">
-                <div class="container-fluid">
-                <a class="navbar-brand" href="css/imagens/senac-logo.png">
-                    <figure>
-                        <img scr="css/imagens/senac-logo.png">
-                    </figure>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Ações
-                        </a>
-                        <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="InserirResiduos.php">Cadastrar</a></li>
-                        <li><a class="dropdown-item" href="consultarResiduo.php">Consultar</a></li>
-                        <li><a class="dropdown-item" href="atualizarResiduo.php">Atualizar</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="excluirResiduo.php">Excluir</a></li>
-                        </ul>
-                    </li>
-                    </ul>
-                </div>
-                </div>
+        <header>
+            <nav>
+                <a class="logo"><img src="css/imagens/logo.png" width="100" height="50"></a>
+                <ul class="nav-list">
+                    <li><a href="menu.php">HOME</a></li>
+                    <li><a href="consultarMenu.php">CONSULTAR</a></li>
+                    <li><a href="atualizarResiduo.php">ATUALIZAR</a></li>
+                    <li><a href="excluirResiduo.php">EXCLUIR</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+
+
+            <div class="intro">
+                <h2>PROJETO ECOEFICIÊNCIA</h2>
+                <figure>
+                </figure>
             </div>
-        </nav>
 
 
-        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                <img src="css/imagens/1.png" class="d-block w-100" alt="ecoeficiência">
-                </div>
-                <div class="carousel-item">
-                <img src="css/imagens/2.png" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                <img src="css/imagens/3.png" class="d-block w-100" alt="...">
-                </div>
+            <div class="form">
+                <h2>INSERIR RESÍDUOS</h2><br><br>
+                <form method="POST">
+                        <label for="lPeso" class="form-label">Peso:</label>
+                        <input type="text" class="form-control" id="tPeso" name="tPeso" placeholder="99.99kg">
+                
+
+                    
+                        <label for="lCat" class="form-label">Categoria: </label>
+                        <select name="tCat">
+                            <option value="naoReciclavel">Não Reciclável</option>
+                            <option value="reciclavel">Reciclável</option>
+                            <option value="oleo">Oleo</option>
+                            <option value="tampinhas">Tampinhas plásticas</option>
+                            <option value="lacres">Lacres de alumínio</option>
+                            <option value="tecidos">Tecidos</option>
+                            <option value="meias">Meias</option>
+                            <option value="esponjas">Esponjas</option>
+                            <option value="eletronicos">Eletrônicos</option>
+                            <option value="pilhasEBaterias">Pilhas e baterias</option>
+                            <option value="infectante">Infectantes</option>
+                            <option value="quimicos">Químicos</option>
+                            <option value="lampadas">Lampada fluorescente</option>
+                            <option value="tonners">Tonners de impressora</option>
+                            <option value="esmalte">Esmalte</option>
+                            <option value="comesticos">Comésticos</option>
+                            <option value="cartelas">Cartela de medicamento</option>
+                            <option value="outro">Outro</option>
+                        </select><br><br>
+                    
+
+                    
+                        <label for="data" class="form-label">Data: </label>
+                        <input type="date" class="form-control" id="tData" name="tData" placeholder="00/00/0000">
+                    
+                        <label for="nome" class="form-label">Nome: </label>
+                        <input type="text" class="form-control" id="tNome" name="tNome" placeholder="Ex.: João Pedro">
+                    
+                        <label for="lEsp" class="form-label">Especialização: </label>
+                        <input type="text" class="form-control" id="tEsp" name="tEsp" placeholder="Técnico em Informática">
+                    
+
+                    <button type="submit">Cadastrar
+                            <?php
+                                $conexao = new Conexao();
+
+                                if(isset($_POST['tPeso'])){
+                                    $peso = $_POST['tPeso'];
+                                    $categoria = $_POST['tCat'];
+                                    $data = $_POST['tData'];
+                                    $nome = $_POST['tNome'];
+                                    $especializacao = $_POST['tEsp'];
+
+                                    $inserir = new Inserir();
+                                    echo $inserir->cadastrarResiduo($conexao,$peso,$categoria,$data,$nome,$especializacao);
+                                }
+                            ?>
+
+                        </button>
+                </form>
             </div>
-        </div>
+        </main>
 
+
+        <section class="">
+            <!-- Footer -->
+            <footer class="text-center text-white" style="background-color: ##657A47;">
+                <!-- Grid container -->
+                <div class="container p-4 pb-0">
+                <!-- Section: CTA -->
+                <section class="">
+                    <p class="d-flex justify-content-center align-items-center">
+                    <button data-mdb-ripple-init type="button" class="btn btn-outline-light btn-rounded">
+                        <a href="menu.php">Home</a>
+                    </button>
+                    </p>
+                </section>
+                <!-- Section: CTA -->
+                </div>
+                <!-- Grid container -->
+
+                <!-- Copyright -->
+                <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                © 2020 Copyright:
+                <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+                </div>
+                <!-- Copyright -->
+            </footer>
+            <!-- Footer -->
+        </section>
 
     </body>

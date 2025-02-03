@@ -1,7 +1,7 @@
 <?php
     namespace PHP\Modelo\Tela;
     require_once('..\Residuo.php');
-    require_once('..\DAO\Consultar.php');
+    require_once('..\DAO\ConsultarData.php');
     require_once('..\DAO\Conexao.php');
 
     use PHP\Modelo\Residuo;
@@ -50,7 +50,7 @@
                 <a class="logo"><img src="css/imagens/logo.png" width="100" height="50"></a>
                 <ul class="nav-list">
                     <li><a href="menu.php">HOME</a></li>
-                    <li><a href="consultarResiduo.php">CONSULTAR</a></li>
+                    <li><a href="consultarMenu.php">CONSULTAR</a></li>
                     <li><a href="atualizarResiduo.php">ATUALIZAR</a></li>
                     <li><a href="excluirResiduo.php">EXCLUIR</a></li>
                 </ul>
@@ -58,7 +58,8 @@
         </header>
 
 
-            <main>
+        <main>
+
                 <div class="intro">
                     <h2>PROJETO ECOEFICIÊNCIA</h2>
                     <figure>
@@ -68,25 +69,25 @@
             
             <form method="POST">
             <div class="mb-3">
-                <label for="lCodigo" class="form-label">Código do resíduo:</label>
-                <input type="number" class="form-control" id="tCodigo" name="tCodigo">
+                <label for="lData" class="form-label">Digite a data que deseja consultar:</label>
+                <input type="date" class="form-control" id="tData" name="tData">
             </div>
 
 
             <button type="submit">Consultar
                     <?php
                         $conexao = new Conexao();
-                        $codigo = $_POST['tCodigo'];
+                        $data = $_POST['tData'];
                         $consultar = new Consultar();
                         
+                        echo $consultar->consultarDatas($conexao,$data);
                     ?>
                 </button>
             </form>
-            <?php echo $consultar->consultarResiduo($conexao,$codigo); ?>
+            
+    
 
         </main>
-
-
 
         <section class="">
             <!-- Footer -->

@@ -6,20 +6,19 @@
 
     class Inserir{
         function cadastrarResiduo(Conexao $conexao,
-                                  string $data,
                                   string $peso,
                                   string $categoria,
+                                  string $data,
                                   string $nome,
                                   string $especializacao
         ){
             try{
                 $conn = $conexao->conectar();
-                $sql  = "Insert into residuo(codigo, peso, categoria, dt, nome, especializacao)
-                        values('','$peso','$categoria','$data','$nome','$especializacao')";
+                $sql  = "Insert into residuo(codigo, peso, categoria, dt, nome, especializacao) 
+                         values('','$peso', '$categoria', '$data', '$nome', '$especializacao')";
                 $result = mysqli_query($conn, $sql);
                 mysqli_close($conn);
                 
-
                 if($result){
                     return "<br><br>Inserido com sucesso!";
                 }
