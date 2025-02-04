@@ -6,7 +6,7 @@
 
     use PHP\Modelo\Residuo;
     use PHP\Modelo\DAO\Conexao;
-    use PHP\Modelo\DAO\Consultar;
+    use PHP\Modelo\DAO\ConsultarData;
 ?>
 
 <!Doctype HTML>
@@ -33,6 +33,14 @@
 
             img{
                 width: 100%;
+            }
+
+            .form{
+                min-width: 320px;
+                max-width: 1920px;
+                margin: auto;
+
+                padding: 50px;
             }
         </style>
         <style>
@@ -67,24 +75,21 @@
                     </figure>
                 </div>
             
-            <form method="POST">
-            <div class="mb-3">
+            <form class="form" method="POST">
                 <label for="lData" class="form-label">Digite a data que deseja consultar:</label>
                 <input type="date" class="form-control" id="tData" name="tData">
-            </div>
 
 
             <button type="submit">Consultar
                     <?php
                         $conexao = new Conexao();
                         $data = $_POST['tData'];
-                        $consultar = new Consultar();
-                        
+                        $consultar = new ConsultarData();
+
                         echo $consultar->consultarDatas($conexao,$data);
                     ?>
                 </button>
             </form>
-            
     
 
         </main>

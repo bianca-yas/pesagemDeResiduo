@@ -34,6 +34,14 @@
             img{
                 width: 100%;
             }
+
+            .form{
+                min-width: 320px;
+                max-width: 1920px;
+                margin: auto;
+
+                padding: 50px;
+            }
         </style>
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
@@ -66,7 +74,7 @@
                     </figure>
                 </div>
             
-            <form method="POST">
+            <form class="form" method="POST">
             <div class="mb-3">
                 <label for="lCodigo" class="form-label">Código do resíduo:</label>
                 <input type="number" class="form-control" id="tCodigo" name="tCodigo">

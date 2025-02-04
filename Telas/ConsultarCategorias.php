@@ -6,7 +6,7 @@
 
     use PHP\Modelo\Residuo;
     use PHP\Modelo\DAO\Conexao;
-    use PHP\Modelo\DAO\Consultar;
+    use PHP\Modelo\DAO\ConsultarCat;
 ?>
 
 <!Doctype HTML>
@@ -33,6 +33,14 @@
 
             img{
                 width: 100%;
+            }
+
+            .form{
+                min-width: 320px;
+                max-width: 1920px;
+                margin: auto;
+
+                padding: 50px;
             }
         </style>
         <style>
@@ -67,26 +75,23 @@
                     </figure>
                 </div>
             
-            <form method="POST">
-            <div class="mb-3">
+            <form class="form" method="POST">
                 <label for="lCat" class="form-label">Digite a categoria que deseja consultar:</label>
                 <input type="text" class="form-control" id="tCat" name="tCat">
-            </div>
 
 
             <button type="submit">Consultar
                     <?php
                         $conexao = new Conexao();
-                        $categoria = $_POST['tCategoria'];
-                        $consultar = new Consultar();
+                        $categoria = $_POST['tCat'];
+                        $consultar = new ConsultarCat();
                         
                     ?>
                 </button>
             </form>
             <?php echo $consultar->consultarCategoria($conexao,$categoria); ?>
-    
-
         </main>
+
             
 
         <section class="">

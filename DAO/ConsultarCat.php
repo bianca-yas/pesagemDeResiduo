@@ -11,17 +11,17 @@
                     $result = mysqli_query($conn, $sql);
 
                     while($dados = mysqli_fetch_Array($result)){
-                        if($dados['codigo'] == $codigo){
+                        if($dados['categoria'] == $categoria){
                             return "<br>Código do resíduo: ".$dados['codigo']. 
                                 "<br>Peso: ".$dados['peso']. 
                                 "<br>Categoria: ".$dados['categoria']. 
                                 "<br>Data: ".$dados['dt']. 
                                 "<br>Nome: ".$dados['nome']. 
-                                "<br>Especialização: ".$dados['especializacao'];
+                                "<br>Especialização: ".$dados['especializacao']."<br><br>";
                         }
-                        return "Categoria digitada inválida!";
+                    return "Categoria digitada inválida!";
                     }
-            }catch(Except $erro){
+            }catch(Exception $erro){
                 return "<br>Algo deu errado!".$erro;
             }
         }

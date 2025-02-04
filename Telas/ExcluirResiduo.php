@@ -35,6 +35,14 @@
             img{
                 width: 100%;
             }
+
+            .form{
+                min-width: 320px;
+                max-width: 1920px;
+                margin: auto;
+
+                padding: 50px;
+            }
         </style>
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
@@ -67,3 +75,23 @@
                     
                 </figure>
             </div>
+
+            <label for="lCat" class="form-label">Digite a código do resíduo que deseja excluir:</label>
+                <input type="number" class="form-control" id="tCodigo" name="tCodigo">
+
+
+            <button type="submit">Excluir
+                    <?php
+                        $conexao = new Conexao();
+                        $codigo = $_POST['tCodigo'];
+                        $excluir = new Excluir();
+                        
+                    ?>
+                </button>
+            </form>
+            <?php echo $excluir->excluirResiduo($conexao,$codigo); ?>
+
+
+        </main>
+    </body>
+</html>

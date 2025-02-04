@@ -10,7 +10,7 @@
             $result = mysqli_query($conn, $sql);
 
             while($dados = mysqli_fetch_Array($result)){
-                if($dados['codigo'] == $codigo){
+                if($dados['dt'] == $data){
                     return "<br>Código do resíduo: ".$dados['codigo']. 
                         "<br>Peso: ".$dados['peso']. 
                         "<br>Categoria: ".$dados['categoria']. 

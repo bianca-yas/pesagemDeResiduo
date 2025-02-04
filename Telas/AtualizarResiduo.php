@@ -1,10 +1,7 @@
 <?php
     namespace PHP\Modelo\Tela;
-    require_once('..\Residuo.php');
     require_once('..\DAO\Atualizar.php');
     require_once('..\DAO\Conexao.php');
-
-    use PHP\Modelo\Residuo;
     use PHP\Modelo\DAO\Conexao;
     use PHP\Modelo\DAO\Atualizar;
 
@@ -34,6 +31,14 @@
 
             img{
                 width: 100%;
+            }
+
+            .form{
+                min-width: 320px;
+                max-width: 1920px;
+                margin: auto;
+
+                padding: 50px;
             }
         </style>
         <style>
@@ -99,9 +104,13 @@
                                     $novoDado = $_POST['tNovoDado'];
                                 }
                             ?>
-
                         </button>
                 </form>
+                <?php
+                    if(isset($_POST['tCpf'])){
+                        echo $atualizar->attResiduo($conexao,$campo,$novoDado,$codigo);
+                    }
+                ?>
             </div>
         </main>
 
