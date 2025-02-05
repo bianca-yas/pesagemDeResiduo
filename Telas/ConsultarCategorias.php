@@ -60,7 +60,7 @@
                     <li><a href="menu.php">HOME</a></li>
                     <li><a href="consultarMenu.php">CONSULTAR</a></li>
                     <li><a href="atualizarResiduo.php">ATUALIZAR</a></li>
-                    <li><a href="excluirResiduo.php">EXCLUIR</a></li>
+                    <li><a href="excluirMenu.php">EXCLUIR</a></li>
                 </ul>
             </nav>
         </header>
@@ -71,7 +71,7 @@
                 <div class="intro">
                     <h2>PROJETO ECOEFICIÊNCIA</h2>
                     <figure>
-                        
+                        <img src="css/imagens/ecosus.jpg" class="banner">
                     </figure>
                 </div>
             

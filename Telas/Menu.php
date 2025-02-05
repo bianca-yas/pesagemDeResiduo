@@ -43,6 +43,11 @@
 
                 padding: 50px;
             }
+
+            header{
+                min-width: 320px;
+                max-width: 1920px;
+            }
         </style>
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
@@ -61,7 +66,7 @@
                     <li><a href="menu.php">HOME</a></li>
                     <li><a href="consultarMenu.php">CONSULTAR</a></li>
                     <li><a href="atualizarResiduo.php">ATUALIZAR</a></li>
-                    <li><a href="excluirResiduo.php">EXCLUIR</a></li>
+                    <li><a href="excluirMenu.php">EXCLUIR</a></li>
                 </ul>
             </nav>
         </header>
@@ -72,6 +77,7 @@
             <div class="intro">
                 <h2>PROJETO ECOEFICIÊNCIA</h2>
                 <figure>
+                    <img src="css/imagens/ecosus.jpg" class="banner">
                 </figure>
             </div>
 
@@ -138,7 +144,7 @@
                 </form>
             </div>
         </main>
-
+        <script scr="mobile-navbar.js"></script>
 
         <section class="">
             <!-- Footer -->
@@ -166,5 +172,4 @@
             </footer>
             <!-- Footer -->
         </section>
-
     </body>

@@ -49,7 +49,7 @@
                     <li><a href="menu.php">HOME</a></li>
                     <li><a href="consultarMenu.php">CONSULTAR</a></li>
                     <li><a href="atualizarResiduo.php">ATUALIZAR</a></li>
-                    <li><a href="excluirResiduo.php">EXCLUIR</a></li>
+                    <li><a href="excluirMenu.php">EXCLUIR</a></li>
                 </ul>
             </nav>
         </header>
@@ -59,16 +59,16 @@
                 <div class="intro">
                     <h2>PROJETO ECOEFICIÊNCIA</h2>
                     <figure>
-                        
+                        <img src="css/imagens/ecosus.jpg" class="banner">
                     </figure>
                 </div>
 
             
             <div class="consultar">
                 <h2>COMO DESEJA CONSULTAR?</h2>
-                <a class="btn btn-dark" href="consultarResiduo.php" role="button">Consultar Resíduos</a>
-                <a class="btn btn-dark" href="consultarDatas.php" role="button">Consultar Datas</a>
-                <a class="btn btn-dark" href="consultarCategorias.php" role="button">Consultar Categorias</a>
+                <a class="btn btn-dark" href="consultarResiduo.php" role="button" id="botao3">Consultar Resíduos</a>
+                <a class="btn btn-dark" href="consultarCategorias.php" role="button" id="botao4">Consultar Categorias</a>
+                <a class="btn btn-dark" href="consultarTudo.php" role="button" id="botao5">Consultar Todos os Dados</a>
 
             </div>
             

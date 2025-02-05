@@ -1,10 +1,12 @@
 <?php
     namespace PHP\Modelo\Tela;
-    require_once('..\DAO\Atualizar.php');
+    require_once('..\Residuo.php');
+    require_once('..\DAO\ConsultarBanco.php');
     require_once('..\DAO\Conexao.php');
-    use PHP\Modelo\DAO\Conexao;
-    use PHP\Modelo\DAO\Atualizar;
 
+    use PHP\Modelo\Residuo;
+    use PHP\Modelo\DAO\Conexao;
+    use PHP\Modelo\DAO\ConsultarBanco;
 ?>
 
 <!Doctype HTML>
@@ -63,57 +65,29 @@
             </nav>
         </header>
 
+
         <main>
 
+                <div class="intro">
+                    <h2>PROJETO ECOEFICIÊNCIA</h2>
+                    <figure>
+                        <img src="css/imagens/ecosus.jpg" class="banner">
+                    </figure>
+                </div>
 
-            <div class="intro">
-                <h2>PROJETO ECOEFICIÊNCIA</h2>
-                <figure>
-                    <img src="css/imagens/ecosus.jpg" class="banner">
-                </figure>
-            </div>
+                <div class="consultar">
+                    <h2>CONSULTAR TODOS OS DADOS</h2>
+                </div>
 
 
-            <div class="form">
-                <h2>ATUALIZAR RESÍDUOS</h2><br><br>
-                <form method="POST">
-                        <label for="codigo" class="form-label">Código do resíduo: </label>
-                        <input type="number" class="form-control" id="tCodigo" name="tCodigo">
-
-                        <label for="lCat" class="form-label">Selecione o campo que deseja atualizar: </label>
-                        <select name="tCampo">
-                            <option value="peso">Peso</option>
-                            <option value="categoria">Categoria</option>
-                            <option value="nome">Nome</option>
-                            <option value="especializacao">Especialização</option>
-                        </select><br><br>
-                    
-                        <label for="novo" class="form-label">Novo Dado: </label>
-                        <input type="text" class="form-control" id="tNovoDado" name="tNovoDado">
-                    
-
-                    <button type="submit">Atualizar
-                            <?php
-                                $conexao = new Conexao();
-
-                                if(isset($_POST['tCodigo'])){
-                                    $atualizar = new Atualizar();
-
-                                    $codigo = $_POST['tCodigo'];
-                                    $campo = $_POST['tCampo'];
-                                    $novoDado = $_POST['tNovoDado'];
-                                }
-                            ?>
-                        </button>
-                </form>
                 <?php
-                    if(isset($_POST['tCodigo'])){
-                        echo $atualizar->attResiduo($conexao,$campo,$novoDado,$codigo);
-                    }
+                    $conexao = new Conexao();
+                    $consulta = new ConsultarBanco();
+                    echo $consulta->consultarTudo($conexao);
                 ?>
-            </div>
         </main>
 
+            
 
         <section class="">
             <!-- Footer -->
@@ -142,4 +116,5 @@
             <!-- Footer -->
         </section>
 
-    </body>
+</body>
+</html>

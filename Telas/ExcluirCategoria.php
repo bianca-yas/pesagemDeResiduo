@@ -1,9 +1,12 @@
 <?php
     namespace PHP\Modelo\Tela;
-    require_once('..\DAO\Atualizar.php');
+    require_once('..\Residuo.php');
+    require_once('..\DAO\ExcluirCat.php');
     require_once('..\DAO\Conexao.php');
+
+    use PHP\Modelo\Residuo;
     use PHP\Modelo\DAO\Conexao;
-    use PHP\Modelo\DAO\Atualizar;
+    use PHP\Modelo\DAO\ExcluirCat;
 
 ?>
 
@@ -73,48 +76,43 @@
                 </figure>
             </div>
 
+            <form class="form" method="POST">
+                <label for="lCat" class="form-label">Escolha a categoria que deseja excluir:</label>
+                            <select name="tCat">
+                                <option value="naoReciclavel">Não Reciclável</option>
+                                <option value="reciclavel">Reciclável</option>
+                                <option value="oleo">Oleo</option>
+                                <option value="tampinhas">Tampinhas plásticas</option>
+                                <option value="lacres">Lacres de alumínio</option>
+                                <option value="tecidos">Tecidos</option>
+                                <option value="meias">Meias</option>
+                                <option value="esponjas">Esponjas</option>
+                                <option value="eletronicos">Eletrônicos</option>
+                                <option value="pilhasEBaterias">Pilhas e baterias</option>
+                                <option value="infectante">Infectantes</option>
+                                <option value="quimicos">Químicos</option>
+                                <option value="lampadas">Lampada fluorescente</option>
+                                <option value="tonners">Tonners de impressora</option>
+                                <option value="esmalte">Esmalte</option>
+                                <option value="comesticos">Comésticos</option>
+                                <option value="cartelas">Cartela de medicamento</option>
+                                <option value="outro">Outro</option>
+                            </select><br><br>
 
-            <div class="form">
-                <h2>ATUALIZAR RESÍDUOS</h2><br><br>
-                <form method="POST">
-                        <label for="codigo" class="form-label">Código do resíduo: </label>
-                        <input type="number" class="form-control" id="tCodigo" name="tCodigo">
 
-                        <label for="lCat" class="form-label">Selecione o campo que deseja atualizar: </label>
-                        <select name="tCampo">
-                            <option value="peso">Peso</option>
-                            <option value="categoria">Categoria</option>
-                            <option value="nome">Nome</option>
-                            <option value="especializacao">Especialização</option>
-                        </select><br><br>
-                    
-                        <label for="novo" class="form-label">Novo Dado: </label>
-                        <input type="text" class="form-control" id="tNovoDado" name="tNovoDado">
-                    
+                <button type="submit">Excluir
+                        <?php
+                            $conexao = new Conexao();
+                            $categoria = $_POST['tCat'];
+                            $excluir = new ExcluirCat();
+                        ?>
+                    </button>
+            </form>
+            <?php echo $excluir->excluirCategoria($conexao,$categoria); ?>
 
-                    <button type="submit">Atualizar
-                            <?php
-                                $conexao = new Conexao();
 
-                                if(isset($_POST['tCodigo'])){
-                                    $atualizar = new Atualizar();
 
-                                    $codigo = $_POST['tCodigo'];
-                                    $campo = $_POST['tCampo'];
-                                    $novoDado = $_POST['tNovoDado'];
-                                }
-                            ?>
-                        </button>
-                </form>
-                <?php
-                    if(isset($_POST['tCodigo'])){
-                        echo $atualizar->attResiduo($conexao,$campo,$novoDado,$codigo);
-                    }
-                ?>
-            </div>
         </main>
-
-
         <section class="">
             <!-- Footer -->
             <footer class="text-center text-white" style="background-color: ##657A47;">
@@ -141,5 +139,5 @@
             </footer>
             <!-- Footer -->
         </section>
-
     </body>
+</html>

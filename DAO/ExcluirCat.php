@@ -3,10 +3,10 @@
     require_once('Conexao.php');
     use PHP\Modelo\DAO\Conexao;
 
-    class Excluir{
-        function excluirResiduo(Conexao $conexao, int $codigo){
+    class ExcluirCat{
+        function excluirCategoria(Conexao $conexao, string $categoria){
             $conn = $conexao->conectar();
-            $sql  = "delete from residuo where codigo = '$codigo'";
+            $sql  = "delete from residuo where categoria = '$categoria'";
             $result = mysqli_query($conn, $sql);
             mysqli_close($conn);
 
@@ -15,7 +15,7 @@
             }else{
                 echo "Não deletado!";
             }
-        }//fim da function
+        }
 
     }
 ?>
