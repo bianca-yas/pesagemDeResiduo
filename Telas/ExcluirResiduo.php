@@ -84,13 +84,19 @@
                 <button type="submit">Excluir
                         <?php
                             $conexao = new Conexao();
-                            $codigo = $_POST['tCodigo'];
+                            $codigo = intval($_POST['tCodigo']);
                             $excluir = new Excluir();
                             
                         ?>
                     </button>
             </form>
-            <?php echo $excluir->excluirResiduo($conexao,$codigo); ?>
+            <?php 
+                if(isset($_POST['tCodigo'])){
+                    echo $excluir->excluirResiduo($conexao,$codigo);
+                }else{
+                    echo "Preencha o campo de código!";
+                }
+            ?>
 
 
         </main>

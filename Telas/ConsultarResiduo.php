@@ -84,13 +84,19 @@
             <button type="submit">Consultar
                     <?php
                         $conexao = new Conexao();
-                        $codigo = $_POST['tCodigo'];
+                        $codigo = intval($_POST['tCodigo']);
                         $consultar = new Consultar();
-                        
                     ?>
                 </button>
             </form>
-            <?php echo $consultar->consultarResiduo($conexao,$codigo); ?>
+            <?php
+                if(isset($_POST['tCodigo'])){
+                    echo $consultar->consultarResiduo($conexao,$codigo);
+                }else{
+                    echo "Preencha o campo de código.";
+                }
+            ?>
+            
             
         </main>
         <section class="">

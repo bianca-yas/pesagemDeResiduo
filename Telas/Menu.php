@@ -127,14 +127,13 @@
                     <button type="submit">Cadastrar
                             <?php
                                 $conexao = new Conexao();
-
                                 if(isset($_POST['tPeso'])){
                                     $peso = $_POST['tPeso'];
                                     $categoria = $_POST['tCat'];
                                     $data = $_POST['tData'];
                                     $nome = $_POST['tNome'];
                                     $especializacao = $_POST['tEsp'];
-
+            
                                     $inserir = new Inserir();
                                     echo $inserir->cadastrarResiduo($conexao,$peso,$categoria,$data,$nome,$especializacao);
                                 }
@@ -142,6 +141,7 @@
 
                         </button>
                 </form>
+                
             </div>
         </main>
         <script scr="mobile-navbar.js"></script>

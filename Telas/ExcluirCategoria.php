@@ -108,7 +108,14 @@
                         ?>
                     </button>
             </form>
-            <?php echo $excluir->excluirCategoria($conexao,$categoria); ?>
+            <?php 
+                if(isset($_POST['tCat'])){
+                    echo $excluir->excluirCategoria($conexao,$categoria);
+                }else{
+                    echo "Escolha uma categoria.";
+                }
+            ?>
+            
 
 
 

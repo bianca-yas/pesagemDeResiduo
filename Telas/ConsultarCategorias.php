@@ -89,7 +89,14 @@
                     ?>
                 </button>
             </form>
-            <?php echo $consultar->consultarCategoria($conexao,$categoria); ?>
+            <?php 
+            if(isset($_POST['tCat'])){
+                echo $consultar->consultarCategoria($conexao,$categoria);
+            }else{
+                echo "Preencha o campo vazio.";
+            }
+            
+            ?>
         </main>
 
             
